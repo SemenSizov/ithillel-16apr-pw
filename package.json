@@ -1,0 +1,16 @@
+{
+  "name": "ithillel-16apr-pw",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test:api": "npx playwright test --project=api"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.44.1",
+    "@types/node": "^20.14.5"
+  }
+}
