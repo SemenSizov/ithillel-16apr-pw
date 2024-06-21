@@ -18,57 +18,22 @@ export default defineConfig({
   reporter: 'html',
   globalSetup: 'global-setup.ts',
   globalTeardown: 'global-setup.ts',
-  testIgnore: '**.skip.**.ts',
-  testMatch: '**.e2e.ts',
-  outputDir: 'res',
-  timeout: 60 * 1000,
+  testMatch: '**.spec.ts',
   use: {
-    /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://playwright.dev',
-
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'retain-on-failure',
+    headless: false,
+    baseURL: 'https://qauto.forstudy.space/',
+    httpCredentials: {
+      username: 'guest',
+      password: 'welcome2qauto'
+    },
+    trace: 'on',
+    testIdAttribute: 'qa-dont-touch'
   },
-  /* Configure projects for major browsers */
   projects: [
     {
       name: 'qauto',
-      testMatch: '**.qauto.spec.ts',
-      use: {
-        headless: false,
-        baseURL: 'https://qauto.forstudy.space/',
-        httpCredentials: {
-          username: 'guest',
-          password: 'welcome2qauto'
-        }
-      }
+      testMatch: '**.spec.ts'
     },
-    {
-      name: 'smoke',
-      // testDir: './tests/smoke',
-      // testMatch: '**.smoke.e2e.ts',
-      grep: new RegExp('@smoke'),
-      use: { ...devices['Desktop Chrome'], 
-        headless: false,
-        viewport: {
-          width: 400, 
-          height: 300
-        }
-       },
-    },
-    {
-      name: 'regression',
-      // testDir: './tests/regression',
-      // testMatch: '**.e2e.ts',
-      grep: new RegExp('@regression'),
-      use: { ...devices['Desktop Chrome'] },
-    },
-    {
-      name: 'api',
-      testDir: './tests',
-      testMatch: '**.api.spec.ts'
-
-    }
   ],
 
   /* Run your local dev server before starting the tests */
