@@ -10,7 +10,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './tests',
+  testDir: './tests/garage',
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -32,8 +32,9 @@ export default defineConfig({
   projects: [
     {
       name: 'qauto',
-      testMatch: '**.spec.ts'
-    },
+      testMatch: '**.spec.ts',
+      use: {...devices['Desktop Chrome']}
+    }
   ],
 
   /* Run your local dev server before starting the tests */
