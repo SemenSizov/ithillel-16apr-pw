@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test"
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --ui",
+    "debug": "npx playwright test --debug",
+    "list": "npx playwright test --list",
+    "test:qa": "set TEST_ENV=QA && npx playwright test --list",
+    "test:stage": "set TEST_ENV=STAGE && npx playwright test --list",
+    "test:prod:smoke": "npx playwright test --project=prod"
   },
   "keywords": [],
   "author": "",
@@ -11,6 +17,11 @@
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.44.1",
-    "@types/node": "^20.14.5"
+    "@types/node": "^20.14.5",
+    "monocart-reporter": "^2.5.2"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5"
   }
 }
